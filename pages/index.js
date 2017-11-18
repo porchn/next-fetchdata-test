@@ -4,7 +4,7 @@ import React,{Component} from 'react'
 import axios from 'axios';
 
 class Index extends Component{
-    static async getInitialProps () {
+    static async getInitialProps(req) {
         const res = await fetch('http://api.carcaretoday.com/user/login',{
             method: 'POST',
             mode: 'no-cors',
@@ -24,15 +24,14 @@ class Index extends Component{
         //console.log(this.props);
     }
 
-    handletest = async (e) => {
-        const res = await fetch('http://api.carcaretoday.com/user/login',{
-            method: 'POST',
+    handletest = async(e) => {
+        const res = await fetch('http://api.carcaretoday.com/example/users',{
+            method: 'GET',
             headers: {
                 'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
                 'Content-Type': 'application/json; charset=utf-8',
                 'X-API-KEY' : 'wg008g8k4w8gkgkwcsgogosk4kwog8ckss8ksc8s'
-            },
-            body: JSON.stringify({'email':'porchn.chin@gmail.com','password':'1q2w3e4r'})
+            }
         })
         const json = await res.json()
         console.log(json)
@@ -50,8 +49,9 @@ class Index extends Component{
             data: {email:'porchn.chin@gmail.com',password:'1q2w3e4r'}
         });
 
-        const json = await res.json()
-        console.log(json)
+        //const json = await res.json()
+        console.log(res)
+
     }
     
     render(){
